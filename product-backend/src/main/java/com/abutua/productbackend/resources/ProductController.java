@@ -19,7 +19,8 @@ public class ProductController {
 
     private List<Product> products = new ArrayList<>();
 
-    // @PostContruct Convoca o Método abaixo, assim que o objeto ProductController é construído
+    // @PostContruct Convoca o Método abaixo, assim que o objeto ProductController é
+    // construído
     @PostConstruct
     public void init() {
         Product p1 = new Product();
@@ -45,17 +46,24 @@ public class ProductController {
     @GetMapping("products/{id}")
     public ResponseEntity<Product> getProdut(@PathVariable int id) {
 
-        if (id <= products.size()) {
-            return ResponseEntity.ok(products.get(id - 1));
-        }
-        else {
-            // Mensagem de Erro do Navegador
-            // return ResponseEntity.notFound().build();
+        // if (id <= products.size()) {
+        // return ResponseEntity.ok(products.get(id - 1));
+        // }
+        // else {
+        // // Mensagem de Erro do Navegador
+        // // return ResponseEntity.notFound().build();
 
-            // Mensagem de Erro do seu Servidor
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Product not found");
-        }
-        
+        // // Mensagem de Erro do seu Servidor
+        // throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Product not found");
+        // }
+
+        // Mensagem de Erro com Programação Funcional
+        Product prod =  products.stream()
+                                .filter(p -> p.getId() == id)
+                                .findFirst()
+                                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Product not found"));
+
+        return ResponseEntity.ok(prod);
     }
 
     @GetMapping("products")
