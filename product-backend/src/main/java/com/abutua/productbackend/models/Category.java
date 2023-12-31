@@ -1,41 +1,29 @@
 package com.abutua.productbackend.models;
 
-public class Product {
-
-    // Atributos
+public class Category {
+    
     private int id;
     private String name;
-    private double price;
 
-    // Métodos Construtores
-    public Product(int id, String name, double price) {
+    public Category(int id, String name) {
         this.id = id;
         this.name = name;
-        this.price = price;
     }
 
-    public Product() {
-
-    }
-
-    // Métodos
     public int getId() {
         return id;
     }
+
     public void setId(int id) {
         this.id = id;
     }
+
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
-    public double getPrice() {
-        return price;
-    }
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
+    
 }

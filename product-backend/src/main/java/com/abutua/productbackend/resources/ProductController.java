@@ -1,6 +1,7 @@
 package com.abutua.productbackend.resources;
 
-import java.util.ArrayList;
+// import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
@@ -12,36 +13,29 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.abutua.productbackend.models.Product;
 
-import jakarta.annotation.PostConstruct;
+// import jakarta.annotation.PostConstruct;
 
 @RestController
 public class ProductController {
 
-    private List<Product> products = new ArrayList<>();
+    private List<Product> products = Arrays.asList( new Product(1, "Product 01", 100.50),
+                                                    new Product(2, "Product 02", 200.50),
+                                                    new Product(3, "Product 03", 300.50));
+
+    // private List<Product> products = new ArrayList<>();
 
     // @PostContruct Convoca o Método abaixo, assim que o objeto ProductController é
     // construído
-    @PostConstruct
-    public void init() {
-        Product p1 = new Product();
-        p1.setId(1);
-        p1.setName("Product 01");
-        p1.setPrice(100.50);
+    // @PostConstruct
+    // public void init() {
+    //     Product p1 = new Product(1, "Product 01", 100.50);
+    //     Product p2 = new Product(2, "Product 02", 200.50);
+    //     Product p3 = new Product(3, "Product 03", 300.50);
 
-        Product p2 = new Product();
-        p2.setId(2);
-        p2.setName("Product 02");
-        p2.setPrice(200.50);
-
-        Product p3 = new Product();
-        p3.setId(3);
-        p3.setName("Product 03");
-        p3.setPrice(300.50);
-
-        products.add(p1);
-        products.add(p2);
-        products.add(p3);
-    }
+    //     products.add(p1);
+    //     products.add(p2);
+    //     products.add(p3);
+    // }
 
     @GetMapping("products/{id}")
     public ResponseEntity<Product> getProdut(@PathVariable int id) {
