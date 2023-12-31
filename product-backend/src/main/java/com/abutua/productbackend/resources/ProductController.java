@@ -18,9 +18,11 @@ import com.abutua.productbackend.models.Product;
 @RestController
 public class ProductController {
 
-    private List<Product> products = Arrays.asList( new Product(1, "Product 01", 100.50),
-                                                    new Product(2, "Product 02", 200.50),
-                                                    new Product(3, "Product 03", 300.50));
+private List<Product> products = Arrays.asList( 
+    new Product(1, "Product 01", "Description 01", 1, false, false, 100.50),
+    new Product(2, "Product 02", "Description 02", 1, true, true, 200.50),
+    new Product(3, "Product 03", "Description 03", 1, false, true, 300.50)
+);
 
     // private List<Product> products = new ArrayList<>();
 
