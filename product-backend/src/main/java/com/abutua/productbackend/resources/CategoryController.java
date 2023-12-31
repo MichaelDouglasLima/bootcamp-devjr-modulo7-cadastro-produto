@@ -15,14 +15,14 @@ import com.abutua.productbackend.models.Category;
 @RestController
 public class CategoryController {
     
-    private List<Category> categorys = Arrays.asList(   new Category(1, "Produção Própria"),
+    private List<Category> categories = Arrays.asList(  new Category(1, "Produção Própria"),
                                                         new Category(2, "Nacional"),
                                                         new Category(3, "Importado"));
 
-    @GetMapping("categorys/{id}")
+    @GetMapping("categories/{id}")
     public ResponseEntity<Category> getCategory(@PathVariable int id){
         
-        Category cat = categorys.stream()
+        Category cat = categories.stream()
                                 .filter(p -> p.getId() == id)
                                 .findFirst()
                                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Category not found"));
@@ -30,8 +30,8 @@ public class CategoryController {
         return ResponseEntity.ok(cat);
     }
 
-    @GetMapping("categorys")
-    public List<Category> getCategorys(){
-        return categorys;
+    @GetMapping("categories")
+    public List<Category> getCategories(){
+        return categories;
     }
 }
