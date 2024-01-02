@@ -2,9 +2,11 @@ package com.abutua.productbackend.models;
 
 public class Category {
 
+    // Atributos
     private int id;
     private String name;
 
+    // Métodos Construtores
     public Category(int id, String name) {
         this.id = id;
         this.name = name;
@@ -14,6 +16,7 @@ public class Category {
         
     }
 
+    // Métodos
     public int getId() {
         return id;
     }

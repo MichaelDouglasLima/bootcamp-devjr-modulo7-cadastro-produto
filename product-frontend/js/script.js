@@ -1,24 +1,13 @@
-function convertToNumber(priceFormat) {
-    return priceFormat.replace(/\./g, '').replace(',', '.'); //Expressão Regular
-}
-
 // Data
 var products = [];
 var categories = [];
 
-//Onload
+// Onload
 loadCategories();
 loadProducts();
 
-//Load all categories
+// Load all categories
 function loadCategories() {
-
-    // Chamada Assíncrona
-    // $.getJSON("http://localhost:8080/categories", (response) => {
-    //     categories = response;
-    // });
-
-    // Chamada Não Assíncrona
     $.ajax({
             url : "http://localhost:8080/categories",
             type : "GET",
@@ -32,13 +21,10 @@ function loadCategories() {
     });
 }
 
-//Load all products
+// Load all products
 function loadProducts() {
-
     $.getJSON("http://localhost:8080/products", (response) => {
-
         products = response;
-
         for (let prod of products) {
             addNewRow(prod);
         }
@@ -114,5 +100,8 @@ function addNewRow(prod) {
     cell = newRow.insertCell();
     cell.className = "d-none d-md-table-cell";
     cell.innerHTML = options;
+}
 
+function convertToNumber(priceFormat) {
+    return priceFormat.replace(/\./g, '').replace(',', '.');
 }
