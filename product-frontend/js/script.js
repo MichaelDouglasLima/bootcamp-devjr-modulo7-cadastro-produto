@@ -52,7 +52,7 @@ function save() {
         name: document.getElementById("inputName").value,
         description: document.getElementById("inputDescription").value,
         price: convertToNumber(document.getElementById("inputPrice").value),
-        category: document.getElementById("selectCategory").value,
+        idCategory: document.getElementById("selectCategory").value,
         promotion: document.getElementById("checkBoxPromotion").checked,
         newProduct: document.getElementById("checkBoxNewProduct").checked
     };
